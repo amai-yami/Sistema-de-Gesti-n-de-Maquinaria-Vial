@@ -6,15 +6,25 @@ instalar git(opcional) o descargar el rar de mi repositorio
 ---instalar git  (https://git-scm.com/downloads)
 
 --marcar las opciones
+
 .use vim(the ubiquitous text editor) as git`s default editor 
+
 .let git decide 
+
 .git from the command line and also from 3rd-party software
+
 .use bundled openssh
+
 .use the native windows secure channel library
+
 .checkout windows-style,commit unix-style line endings 
+
 .use mintty (the default terminal of msys2)
+
 .fast-forward or merge 
-:git credential manager
+
+.git credential manager
+
 .eneabe file system caching  
 
 Paso para dar permisos a herd
@@ -36,10 +46,11 @@ Pasos clave que debes seguir ahora (en orden):
 una ves echo eso se busca la carpeta raiz
 cd C:\Users\users\Herd
 git clone https://github.com/amai-yami/Sistema-de-Gesti-n-de-Maquinaria-Vial.git
+
 luego cd nombre de la carpeta clonada ya sea en visual studio code o cmd 
 preferiblemente visual studio code abriendo una terminal ahi 
 visual studio se instala de microsoft store en windows 10 o 11
-o por la url ()
+o por la url (https://code.visualstudio.com/download)
 
 
 
@@ -73,24 +84,37 @@ o por la url ()
    DB_USERNAME=tu_usuario
    DB_PASSWORD=tu_contraseña
 
+   con otro gestor de base de datos mysql(como mysql workbench)
+   la instalacion depende del gestor que desee usar
+
    o
 
    DB_CONNECTION=sqlite
    DB_DATABASE=database/database.sqlite
-   DB_HOST=127.0.0.1
-   DB_PORT=3306
-   DB_USERNAME=root
-   DB_PASSWORD=
 
-5. Ejecutar migraciones para crear tablas en la base de datos
+   --Ve a la raíz de tu proyecto:
+cd C:\Users\users\Herd\carpeta proyecto
+
+Luego, crea la carpeta database (si no existe):
+mkdir database
+
+Y dentro de ella, crea el archivo vacío .sqlite:
+type nul > database\database.sqlite
+
+O si usas PowerShell:
+New-Item -ItemType File -Path .\database\database.sqlite
+
+
+
+6. Ejecutar migraciones para crear tablas en la base de datos
 
    php artisan migrate --seed
 
-6. (Opcional) Ejecutar seeders si el proyecto tiene datos de prueba
+7. (Opcional) Ejecutar seeders si el proyecto tiene datos de prueba
 
    php artisan db:seed
 
-7. Finalmente, levanta el servidor
+8. Finalmente, levanta el servidor
 
    php artisan serve
 
@@ -101,7 +125,7 @@ o por la url ()
 Nota
 Si quieres usar Herd con el dominio .test, primero asegúrate que todo esto funcione en localhost, y luego configuras Herd y el archivo hosts.
 
-y por ultimo en el archivo indexview.blade.php  esta comentado el crud de provincias por si quiere probar agregar ver o hacer algun crud ahi(opcional)
+y por ultimo en el archivo indexview.blade.php  esta comentado el crud de provincias por si quiere probar agregar ver el boton de provincias con sus crud (opcional)
 
 
 
