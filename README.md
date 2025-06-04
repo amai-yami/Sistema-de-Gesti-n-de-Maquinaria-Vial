@@ -1,61 +1,108 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+instalar herd  (https://herd.laravel.com/docs/windows/getting-started/installation)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+instalar git(opcional) o descargar el rar de mi repositorio
 
-## About Laravel
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---instalar git  (https://git-scm.com/downloads)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+--marcar las opciones
+.use vim(the ubiquitous text editor) as git`s default editor 
+.let git decide 
+.git from the command line and also from 3rd-party software
+.use bundled openssh
+.use the native windows secure channel library
+.checkout windows-style,commit unix-style line endings 
+.use mintty (the default terminal of msys2)
+.fast-forward or merge 
+:git credential manager
+.eneabe file system caching  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Paso para dar permisos a herd
+1. Abre el archivo hosts como administrador (muy importante para poder guardar cambios)
+   Busca Bloc de notas en el menú inicio.
 
-## Learning Laravel
+   Haz clic derecho y selecciona Ejecutar como administrador.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+   Luego en Bloc de notas abre el archivo:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+   C:\Windows\System32\drivers\etc\hosts
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+2. Agrega esta línea al final (nueva línea):
 
-## Laravel Sponsors
+   127.0.0.1 sistema-de-gesti-n-de-maquinaria-vial.test
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Pasos clave que debes seguir ahora (en orden):
 
-### Premium Partners
+una ves echo eso se busca la carpeta raiz
+cd C:\Users\users\Herd
+git clone https://github.com/amai-yami/Sistema-de-Gesti-n-de-Maquinaria-Vial.git
+luego cd nombre de la carpeta clonada ya sea en visual studio code o cmd 
+preferiblemente visual studio code abriendo una terminal ahi 
+visual studio se instala de microsoft store en windows 10 o 11
+o por la url ()
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Instalar dependencias con Composer
+   Abre la terminal en la carpeta raíz del proyecto (donde está composer.json) y ejecuta:
 
-## Code of Conduct
+   composer install
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+   Esto descarga todas las librerías necesarias.
 
-## Security Vulnerabilities
+2. Copiar archivo .env
+   Si no tienes un archivo .env, créalo copiando el ejemplo:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   cp .env.example .env
+   (en Windows CMD, puedes usar: copy .env.example .env)
 
-## License
+3. Generar la clave de aplicación Laravel
+   Esto es fundamental para la seguridad:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+   php artisan key:generate
+
+4. Configurar la base de datos en .env
+   Edita .env con tus datos de conexión (host, usuario, contraseña, nombre de BD).
+
+   Ejemplo básico:
+
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=nombre_de_tu_bd
+   DB_USERNAME=tu_usuario
+   DB_PASSWORD=tu_contraseña
+
+   o
+
+   DB_CONNECTION=sqlite
+   DB_DATABASE=database/database.sqlite
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_USERNAME=root
+   DB_PASSWORD=
+
+5. Ejecutar migraciones para crear tablas en la base de datos
+
+   php artisan migrate --seed
+
+6. (Opcional) Ejecutar seeders si el proyecto tiene datos de prueba
+
+   php artisan db:seed
+
+7. Finalmente, levanta el servidor
+
+   php artisan serve
+
+   y visita en tu navegador:
+
+   http://localhost:8000
+
+Nota
+Si quieres usar Herd con el dominio .test, primero asegúrate que todo esto funcione en localhost, y luego configuras Herd y el archivo hosts.
+
+y por ultimo en el archivo indexview.blade.php  esta comentado el crud de provincias por si quiere probar agregar ver o hacer algun crud ahi(opcional)
+
+
+
+
