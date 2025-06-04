@@ -47,6 +47,8 @@ una ves echo eso se busca la carpeta raiz
 cd C:\Users\users\Herd
 git clone https://github.com/amai-yami/Sistema-de-Gesti-n-de-Maquinaria-Vial.git
 
+o extraer el rar en dicha carpeta raiz
+
 luego cd nombre de la carpeta clonada ya sea en visual studio code o cmd 
 preferiblemente visual studio code abriendo una terminal ahi 
 visual studio se instala de microsoft store en windows 10 o 11
@@ -78,10 +80,15 @@ o por la url (https://code.visualstudio.com/download)
    Ejemplo básico:
 
    DB_CONNECTION=mysql
+
    DB_HOST=127.0.0.1
+
    DB_PORT=3306
+
    DB_DATABASE=nombre_de_tu_bd
+
    DB_USERNAME=tu_usuario
+
    DB_PASSWORD=tu_contraseña
 
    con otro gestor de base de datos mysql(como mysql workbench)
@@ -90,6 +97,7 @@ o por la url (https://code.visualstudio.com/download)
    o
 
    DB_CONNECTION=sqlite
+
    DB_DATABASE=database/database.sqlite
 
    --Ve a la raíz de tu proyecto:
